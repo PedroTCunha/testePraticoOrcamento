@@ -29,31 +29,61 @@
 							<a href="" class="nav-link disabled"></a>
 							<a href="" class="nav-link disabled"></a>
 						</div>
+						<img src="img/logo.png" class="img-fluid navbar-brand">
 					</div>
-					<a href="" class="navbar-brand">
-						<img src="img/logo.png" alt="Pharmaviews Logo">
-					</a>
 				</div>
 			</nav>
-			<h1>Gestão de Verbas</h1>
 		</header>
 
 		<!--Conteúdo Principal-->
 		<main>
-			<form action="" method="post">
-				<label for="Acao">Ação</label>
-				<select class="form-select" aria-label="Default select example">
-					<option selected>Escolha a ação</option>
-				</select>
-				<label for="Data">Data Prevista</label>
-				<input class="form-control" type="date">
-				<label for="Orcamento">Orçamento Previsto</label>
-				<input class="form-control" type="number">
+			
+			<h1>Gestão de Verbas</h1>
+			
+			<form action="" method="post">	
+				<div class="form-row">
+	            	<div class="form-group col-md-4">
+	              		<label for="acao">Ação</label>
+	                	<select id="acao" class="form-control">
+	                    <option value="">Selecione o tipo da ação...</option>
 
-			</form>
+	                	</select>
+	            	</div>
+	            
+					<div class="form-group col-md-4">
+	              		<label for="dataPrevista">Data prevista</label>
+	                	<input type="date" class="form-control" id="dataPrevista">
+	            	</div>
+	            	
+					<div class="form-group col-md-4">
+	               		<label for="investimento">Investimento previsto</label>
+	                	<div class="input-group">
+	                    	<div class="input-group-prepend">
+	                        	<span class="input-group-text">R$</span>
+	                    	</div>
+	                    	<input type="number" step="0.01" class="form-control" id="investimento" value="0.00">
+	                	</div>
+	            	</div>
+	        	</div>
+	        	<div class="form-group text-right">
+	         	   <button type="button" id="limparBtn" class="btn btn-secondary">Limpar</button>
+	          	  <button type="button" id="adicionarBtn" class="btn btn-primary">Adicionar</button>
+	        	</div>
+    		</form>
+			
+			<table id="verbasTable" class="table table-striped table-bordered" style="width:100%">
+				<thead>
+					<tr>
+						<th>Ação</th>
+						<th>Data prevista</th>
+						<th>Investimento previsto</th>
+						<th>Editar</th>
+						<th>Excluir</th> 
+					</tr>
+				</thead>
+				<tbody>
 
-			<table>
-				<!-- TODO: Criar a tabela que receba as informações do form-->
+				</tbody>
 			</table>
 		</main>
 
