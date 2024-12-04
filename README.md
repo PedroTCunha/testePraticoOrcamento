@@ -69,8 +69,9 @@ Este comando irá instalar todas as bibliotecas Python necessárias listadas no 
 
       docker run -it --name PharmaBanco -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=PharmaBanco -e POSTGRES_USER=PharmaAdmin -p 5433:5432 -d postgres
 
+<hr>
 
-6. Executar o servidor de desenvolvimento:
+7. Executar o servidor de desenvolvimento:
    
         py manage.py runserver
 
