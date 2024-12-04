@@ -1,8 +1,7 @@
 from django.db import models
 
 class TipoAcao(models.Model):
-    nome_acao = models.CharField(max_length=100, unique=True)  # unique=True para evitar nomes duplicados
-
+    nome_acao = models.CharField(max_length=100, unique=True)  
     def __str__(self):
         return self.nome_acao
 

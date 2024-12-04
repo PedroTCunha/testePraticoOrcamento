@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from .models import Acao, TipoAcao
 from .forms import AcaoForm 
@@ -25,10 +26,10 @@ def adicionar_acao (request):
             acao = form.save()
             return JsonResponse({'success': True, 'acao_id': acao.id})
         else:
-            return JsonResponse({'success': False, 'errors': form.errors}) # Retornar erros de validação como JSON
-    else:  # Lidar com outros métodos (GET, etc.)
-      return JsonResponse({'success': False, 'error': 'Método inválido.'}, status=400) # Retornar um JSON com erro 400 - Bad Request
+            return JsonResponse({'success': False, 'errors': form.errors}) 
+    else:  
+      return JsonResponse({'success': False, 'error': 'Método inválido.'}, status=400) 
 
 def visualizar_acoes (request):
-    acoes = Acao.objects.all().select_related('tipo_acao') 
+    acoes = Acao.objects.all().select_related('tipos_acao') 
     return render(request, 'orcamento/index.html', {'acoes': acoes})

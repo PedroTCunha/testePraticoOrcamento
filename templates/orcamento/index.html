@@ -40,7 +40,7 @@
 				<div class="row mb-3">         	
 					<div class="form-group col-md-3">
 						<label for="acao">Ação</label>
-						<select name= "tipo_acao" id="acao" class="form-control">
+						<select name= "tipo_acao" id="acao" class="form-control" required>
 							<option value="">Selecione o tipo da ação...</option>
 							{% for tipo in tipos_acao %} 
 								<option value="{{ tipo.pk }}">{{ tipo.nome_acao }}</option>
@@ -65,7 +65,7 @@
 	        	
 	        			<div class="form-group col-md-3">
 	         			  	<button type="button" id="limparBtn" class="btn btn-secondary"><i class='bx bxs-eraser'></i>Limpar</button>
-	         	 			<button type="button" id="adicionarBtn" class="btn btn-primary"><b><i class='bx bx-plus'></i></b>Adicionar</button>
+	         	 			<button type="submit" id="adicionarBtn" class="btn btn-primary"><b><i class='bx bx-plus'></i></b>Adicionar</button>
 	        			</div>
 				</div>
 			</form>
@@ -81,13 +81,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>	
-					</tr>
+					{% for acao in acoes %}
+            			<tr>
+                			<td>{{ acao.tipo_acao.nome_acao }}</td>
+                			<td>{{ acao.data_prevista }}</td>
+                			<td>{{ acao.investimento }}</td>
+                			<td><button type="button" class="btn btn-link editarBtn"><i class="bx bxs-edit-alt"></i></button></td>
+							<td><button type="button" class="btn btn-link excluirBtn"><i class="bx bxs-trash"></i></button></td>
+            			</tr>
+        			{% endfor %}
 				</tbody>
 			</table>
 		</main>
@@ -107,6 +109,10 @@
 		<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 		
 		<!--Local JavaScript-->
+		<script>
+			const adicionarAcaoUrl = "{% url 'adicionar_acao' %}"; 
+		</script>
+
 		<script src="{% static 'js/script.js' %}"></script>
 	
 	</body>
