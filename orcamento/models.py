@@ -7,7 +7,7 @@ class TipoAcao(models.Model):
 
 class Acao(models.Model):
     tipo_acao = models.ForeignKey(TipoAcao, on_delete=models.CASCADE)
-    investimento = models.FloatField()    
+    investimento = models.DecimalField(max_digits=10, decimal_places=2) 
     data_prevista = models.DateField()
     data_cadastro = models.DateTimeField(auto_now_add=True) 
 
