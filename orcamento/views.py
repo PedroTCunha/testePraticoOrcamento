@@ -8,10 +8,10 @@ from .forms import AcaoForm
 
 def index(request):
     tipos_acao = TipoAcao.objects.all()
+    acoes = Acao.objects.all()
     adicionar_acao_url = reverse('adicionar_acao')  
 
-
-    context = {'tipos_acao': tipos_acao, 'adicionar_acao_url': adicionar_acao_url}
+    context = {'tipos_acao': tipos_acao, 'adicionar_acao_url': adicionar_acao_url, 'acoes': acoes}
     return render(request, "orcamento/index.html", context)
 
 
@@ -30,6 +30,3 @@ def adicionar_acao (request):
     else:  
       return JsonResponse({'success': False, 'error': 'Método inválido.'}, status=400) 
 
-def visualizar_acoes (request):
-    acoes = Acao.objects.all().select_related('tipos_acao') 
-    return render(request, 'orcamento/index.html', {'acoes': acoes})
